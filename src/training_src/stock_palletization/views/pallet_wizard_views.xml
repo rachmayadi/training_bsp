@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="pallet_wizard_form" model="ir.ui.view">
+    <field name="name">pallet.wizard.form</field>
+    <field name="model">pallet.wizard</field>
+    <field name="mode">primary</field>
+    <field name="inherit_id" ref="multi_step_wizard.multi_step_wizard_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//footer" position="before">
+          <group>
+            <group>
+                <field name="product_id"/>
+                <field name="location_dest_id"/>
+                <field name="new_location_id" context="{'display_location_capacity_info': True, 'default_product_id': product_id }"></field>
+                <field name="qty_per_package"/>
+                <label for="planning_qty"/>
+                <div class="o_row">
+                    <span><field name="planning_qty" readonly="1" nolabel="1"/></span>
+                    <span><field name="uom_id" readonly="1" nolabel="1"/></span>
+                </div>
+                <field name="count_of_identical_package"/>
+            </group>
+          </group>
+          <div name="final" attrs="{'invisible': [('state', '!=', 'final')]}">
+            <p>Pallet Generate Done !!.</p>
+          </div>
+      </xpath>
+    </field>
+  </record>
+</odoo>

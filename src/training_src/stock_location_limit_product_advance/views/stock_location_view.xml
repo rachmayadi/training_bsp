@@ -1,0 +1,14 @@
+<odoo>
+    <!-- Inherited stock location form view -->
+    <record id="stock_location_view_form_advance" model="ir.ui.view">
+        <field name="name">stock.location.view.form.advance</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock_location_limit_product.stock_location_view_form_extend"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='uom_id']" position="after">
+                <field name="usage_capacity"/>
+                <field name="remaind_capacity"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="principal_tree_view" model="ir.ui.view">
+            <field name="name">principal_ms2.principal_tree_view</field>
+            <field name="model">principal</field>
+            <field name="arch" type="xml">
+                <tree string="Principal Master Data">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="active"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="principal_form_view" model="ir.ui.view">
+            <field name="name">principal_ms2.principal_form_view</field>
+            <field name="model">principal</field>
+            <field name="arch" type="xml">
+                <form string="Principal Master Data">
+                    <header>
+                        <button name="call_supplier_only_action"
+                                string="Test Button" type="object"
+                                class="oe_highlight"/>
+                        <button name="create_vendor"
+                                string="Create Vendor" type="object"
+                                class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="name" placeholder="Title"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="principal_search_view" model="ir.ui.view">
+            <field name="name">principal_ms2.principal.search</field>
+            <field name="model">principal</field>
+            <field name="arch" type="xml">
+                <search string="Principal Search">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <filter name="set_active" domain="[('active','=',True)]" string="Status Aktif"/>
+                    <filter name="set_not_active" domain="[('active','=',False)]" string="Status Tidak Aktif"/>
+                    <filter name="set_name_filter" domain="[('name','ilike','t')]" string="Name consist t-letter"/>
+                    <!--                            <group expand="1" string="Group By">-->
+                    <!--                                <filter string="Example Field" name="example_field" domain="[]"-->
+                    <!--                                        context="{'group_by':'example_field'}"/>-->
+                    <!--                            </group>-->
+                </search>
+            </field>
+        </record>
+
+        <record id="principal_ms2_principal_act_window" model="ir.actions.act_window">
+            <field name="name">Principal Master Data</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">principal</field>
+            <field name="view_type">form</field>
+            <!--            <field name="view_mode">tree,form</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="context">{ 'search_default_set_active':1,
+                'default_active': True,
+                'default_code':'BSP'}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Principal Master Data"
+                  id="principal_ms2_menu"
+                  parent="stock.menu_stock_inventory_control"
+                  action="principal_ms2_principal_act_window"/>
+
+    </data>
+</odoo>

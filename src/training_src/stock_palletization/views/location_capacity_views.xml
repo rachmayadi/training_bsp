@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="location_capacity_tree_view" model="ir.ui.view">
+            <field name="name">location_capacity.form</field>
+            <field name="model">stock.location.capacity</field>
+            <field name="arch" type="xml">
+                <tree string="Location Capacity">
+                    <field name="name"/>
+                    <field name="qty"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>
